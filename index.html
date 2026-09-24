@@ -18,7 +18,8 @@
 
         body {
             min-height: 100vh;
-            background: #06070a;
+            background: #08090d url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=2000&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
             font-family: 'Inter', -apple-system, sans-serif;
             color: #ffffff;
             display: flex;
@@ -29,28 +30,17 @@
             position: relative;
         }
 
-        /* Interactive Particle Canvas */
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-        }
-
         /* Glassmorphism Card Container */
         .glass-card {
             width: 100%;
             max-width: 680px;
             padding: 50px 40px;
             border-radius: 28px;
-            background: rgba(13, 16, 23, 0.72);
-            backdrop-filter: blur(28px);
-            -webkit-backdrop-filter: blur(28px);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+            background: rgba(15, 18, 25, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: absolute;
             opacity: 0;
@@ -75,21 +65,20 @@
         }
 
         .star-icon {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #e0e0e0;
             margin-bottom: 20px;
             animation: float 3s ease-in-out infinite;
-            text-shadow: 0 0 12px rgba(255,255,255,0.6);
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-6px); }
         }
 
         .subtitle {
             font-size: 0.75rem;
-            letter-spacing: 0.28em;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.6);
             margin-bottom: 20px;
@@ -97,7 +86,7 @@
 
         .title {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 4rem;
+            font-size: 3.8rem;
             font-weight: 400;
             letter-spacing: -0.02em;
             margin-bottom: 16px;
@@ -105,7 +94,6 @@
             background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.75) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255,255,255,0.15);
         }
 
         .description {
@@ -121,24 +109,22 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 14px 38px;
+            padding: 12px 34px;
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.25);
             color: #ffffff;
             cursor: pointer;
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             letter-spacing: 0.05em;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-enter:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.7);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.22);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.1);
         }
 
         /* PROFILE DASHBOARD PAGE */
@@ -164,7 +150,6 @@
             margin-bottom: 24px;
         }
 
-        /* Animated Glowing Avatar Container */
         .avatar-container {
             position: relative;
         }
@@ -193,6 +178,7 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
+            display: block;
         }
 
         .avatar-glow {
@@ -202,8 +188,8 @@
             background-size: 300% 300%;
             border-radius: 50%;
             z-index: 1;
-            filter: blur(10px);
-            opacity: 0.8;
+            filter: blur(8px);
+            opacity: 0.85;
             animation: glowRotate 6s ease infinite;
         }
 
@@ -215,7 +201,7 @@
 
         .profile-name {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             font-weight: 500;
             letter-spacing: -0.02em;
             color: #ffffff;
@@ -231,9 +217,9 @@
             padding: 4px 10px;
             border-radius: 999px;
             background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.35);
+            border: 1px solid rgba(16, 185, 129, 0.3);
             color: #34D399;
-            box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+            letter-spacing: 0.02em;
         }
 
         .profile-title {
@@ -270,25 +256,23 @@
             color: #ffffff;
             text-decoration: none;
             font-size: 0.85rem;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s ease;
             cursor: pointer;
         }
 
-        .social-pill:hover {
-            background: rgba(255,255,255,0.16);
-            transform: translateY(-3px);
-        }
-
         .github-pill:hover {
+            background: rgba(255,255,255,0.16);
             border-color: rgba(255, 255, 255, 0.6);
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         /* REDDIT GLOW EFFECT (#FF4500) */
         .reddit-pill:hover {
-            border-color: rgba(255, 69, 0, 0.7);
-            background: rgba(255, 69, 0, 0.12);
-            box-shadow: 0 0 25px rgba(255, 69, 0, 0.45);
+            border-color: rgba(255, 69, 0, 0.8);
+            background: rgba(255, 69, 0, 0.18);
+            box-shadow: 0 0 25px rgba(255, 69, 0, 0.5);
+            transform: translateY(-2px);
         }
 
         .widgets-row {
@@ -334,10 +318,9 @@
         }
 
         .sidebar-toggle:hover {
-            background: rgba(255,255,255,0.16);
-            border-color: rgba(255,255,255,0.45);
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.4);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         /* LEFT SIDEBAR DRAWER */
@@ -347,11 +330,11 @@
             left: -380px;
             width: 340px;
             height: 100%;
-            background: rgba(10, 13, 18, 0.94);
+            background: rgba(12, 15, 20, 0.92);
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
             border-right: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 10px 0 40px rgba(0,0,0,0.7);
+            box-shadow: 10px 0 40px rgba(0,0,0,0.6);
             padding: 40px 24px;
             transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 100;
@@ -421,8 +404,8 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.55);
-            backdrop-filter: blur(6px);
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s;
@@ -482,9 +465,6 @@
 </head>
 <body>
 
-    <!-- Particle Canvas Background -->
-    <canvas id="particle-canvas"></canvas>
-
     <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
     <!-- PAGE 1: HERO LANDING -->
@@ -508,7 +488,7 @@
             <div class="avatar-container">
                 <div class="avatar-glow"></div>
                 <div class="avatar" id="avatarBox">
-                    <img src="profile.jpg" alt="A" onerror="this.style.display='none'; document.getElementById('avatarBox').innerText='A';">
+                    <img id="userAvatar" src="profile.jpg" alt="A" onerror="handleImageError()">
                 </div>
             </div>
             <div class="profile-info">
@@ -529,9 +509,8 @@
             <a href="https://github.com/Arjun-void" target="_blank" rel="noopener noreferrer" class="social-pill github-pill">
                 <span>💻</span> GitHub
             </a>
-            <!-- REPLACE 'YOUR_REDDIT_USERNAME' WITH YOUR ACTUAL REDDIT USERNAME -->
             <a href="https://www.reddit.com/user/ARJUN-IGCSE/" target="_blank" rel="noopener noreferrer" class="social-pill reddit-pill">
-                <span>🔥</span> Reddit
+                <span>🤖</span> Reddit
             </a>
         </div>
 
@@ -594,7 +573,6 @@
     </div>
 
     <script>
-        // Page Transitions
         function goToPage2() {
             document.getElementById('page1').classList.remove('active');
             setTimeout(() => {
@@ -609,7 +587,6 @@
             }, 200);
         }
 
-        // Left Sidebar Control
         function openSidebar() {
             document.getElementById('sidebar').classList.add('open');
             document.getElementById('overlay').classList.add('active');
@@ -642,7 +619,6 @@
             document.getElementById('overlay').classList.add('active');
         }
 
-        // Persistent View Counter
         function setupViewCounter() {
             let currentViews = localStorage.getItem('site_views');
             if (!currentViews) {
@@ -654,61 +630,20 @@
             document.getElementById('viewCount').innerText = currentViews;
         }
 
+        // Tries profile.png if profile.jpg fails, then falls back to letter "A"
+        function handleImageError() {
+            const img = document.getElementById('userAvatar');
+            if (img.src.endsWith('profile.jpg')) {
+                img.src = 'profile.png';
+            } else if (img.src.endsWith('profile.png')) {
+                img.src = 'profile.jpeg';
+            } else {
+                img.style.display = 'none';
+                document.getElementById('avatarBox').innerText = 'A';
+            }
+        }
+
         setupViewCounter();
-
-        // Canvas Particle Stars Effect
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.4;
-                this.speedY = (Math.random() - 0.5) * 0.4;
-                this.opacity = Math.random() * 0.6 + 0.2;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x < 0) this.x = canvas.width;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.y < 0) this.y = canvas.height;
-                if (this.y > canvas.height) this.y = 0;
-            }
-
-            draw() {
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < 70; i++) {
-            particles.push(new Particle());
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
     </script>
 </body>
 </html>
