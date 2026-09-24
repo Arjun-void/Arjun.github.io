@@ -527,8 +527,16 @@
 
         .modal-title { font-weight: 600; font-size: 0.95rem; }
         .modal-close { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-        .modal-body { flex: 1; padding: 12px; display: flex; align-items: center; justify-content: center; }
-
+        .modal-body { 
+    flex: 1; 
+    padding: 12px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateZ(0);
+}
         /* Responsive Mobile Optimizations */
         @media (max-width: 580px) {
             body { padding: 12px; }
