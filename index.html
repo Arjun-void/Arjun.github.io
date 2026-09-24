@@ -675,12 +675,24 @@
         }
 
         function openNote(title, filename) {
-            document.getElementById('modalTitle').innerText = title;
-            const body = document.getElementById('modalBody');
-            body.innerHTML = `<iframe src="${encodeURIComponent(filename)}" width="100%" height="100%" style="border:none; border-radius:12px;"></iframe>`;
-            document.getElementById('noteModal').classList.add('active');
-            document.getElementById('overlay').classList.add('active');
-        }
+    document.getElementById('modalTitle').innerText = title;
+    const body = document.getElementById('modalBody');
+    
+    // Smooth PDF embed + direct view button for maximum performance
+    body.innerHTML = `
+        <div style="display: flex; flex-direction: column; width: 100%; height: 100%; gap: 10px;">
+            <div style="display: flex; justify-content: flex-end; width: 100%;">
+                <a href="${encodeURIComponent(filename)}" target="_blank" style="color: #00F2FE; text-decoration: none; font-size: 0.8rem; font-weight: 600; padding: 6px 12px; background: rgba(0, 242, 254, 0.1); border: 1px solid rgba(0, 242, 254, 0.3); border-radius: 8px;">
+                    ↗ Open Fullscreen PDF
+                </a>
+            </div>
+            <iframe src="${encodeURIComponent(filename)}" width="100%" height="100%" style="border:none; border-radius:12px; flex: 1; will-change: transform;"></iframe>
+        </div>
+    `;
+    
+    document.getElementById('noteModal').classList.add('active');
+    document.getElementById('overlay').classList.add('active');
+}
 
         function setupViewCounter() {
             let currentViews = localStorage.getItem('site_views');
