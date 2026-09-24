@@ -18,8 +18,7 @@
 
         body {
             min-height: 100vh;
-            background: #08090d url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=2000&auto=format&fit=crop') no-repeat center center fixed;
-            background-size: cover;
+            background: #06070a;
             font-family: 'Inter', -apple-system, sans-serif;
             color: #ffffff;
             display: flex;
@@ -27,6 +26,18 @@
             align-items: center;
             padding: 20px;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Interactive Particle Canvas */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
         }
 
         /* Glassmorphism Card Container */
@@ -35,16 +46,17 @@
             max-width: 680px;
             padding: 50px 40px;
             border-radius: 28px;
-            background: rgba(15, 18, 25, 0.65);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+            background: rgba(13, 16, 23, 0.72);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.1);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: absolute;
             opacity: 0;
             transform: translateY(20px) scale(0.97);
             pointer-events: none;
+            z-index: 10;
         }
 
         .glass-card.active {
@@ -63,20 +75,21 @@
         }
 
         .star-icon {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #e0e0e0;
             margin-bottom: 20px;
             animation: float 3s ease-in-out infinite;
+            text-shadow: 0 0 12px rgba(255,255,255,0.6);
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-8px); }
         }
 
         .subtitle {
             font-size: 0.75rem;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.6);
             margin-bottom: 20px;
@@ -84,7 +97,7 @@
 
         .title {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 3.8rem;
+            font-size: 4rem;
             font-weight: 400;
             letter-spacing: -0.02em;
             margin-bottom: 16px;
@@ -92,6 +105,7 @@
             background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.75) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255,255,255,0.15);
         }
 
         .description {
@@ -107,22 +121,24 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 12px 34px;
+            padding: 14px 38px;
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.25);
             color: #ffffff;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             letter-spacing: 0.05em;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-enter:hover {
-            background: rgba(255, 255, 255, 0.22);
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.7);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255,255,255,0.2);
         }
 
         /* PROFILE DASHBOARD PAGE */
@@ -148,13 +164,14 @@
             margin-bottom: 24px;
         }
 
+        /* Animated Glowing Avatar Container */
         .avatar-container {
             position: relative;
         }
 
         .avatar {
-            width: 72px;
-            height: 72px;
+            width: 76px;
+            height: 76px;
             border-radius: 50%;
             background: linear-gradient(135deg, #111 0%, #222 100%);
             display: flex;
@@ -164,25 +181,41 @@
             font-weight: 600;
             font-size: 1.8rem;
             color: #ffffff;
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 0 25px rgba(200, 83, 230, 0.3);
+            border: 1px solid rgba(255,255,255,0.25);
             position: relative;
             z-index: 2;
+            object-fit: cover;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .avatar-glow {
             position: absolute;
-            top: -3px; left: -3px; right: -3px; bottom: -3px;
-            background: linear-gradient(135deg, #FF0080, #7928CA, #00DFD8);
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            background: linear-gradient(135deg, #FF0080, #7928CA, #00DFD8, #FF4500);
+            background-size: 300% 300%;
             border-radius: 50%;
             z-index: 1;
-            filter: blur(8px);
-            opacity: 0.7;
+            filter: blur(10px);
+            opacity: 0.8;
+            animation: glowRotate 6s ease infinite;
+        }
+
+        @keyframes glowRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .profile-name {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 500;
             letter-spacing: -0.02em;
             color: #ffffff;
@@ -198,9 +231,9 @@
             padding: 4px 10px;
             border-radius: 999px;
             background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.35);
             color: #34D399;
-            letter-spacing: 0.02em;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
         }
 
         .profile-title {
@@ -230,26 +263,32 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 999px;
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,255,255,0.12);
             color: #ffffff;
             text-decoration: none;
             font-size: 0.85rem;
-            transition: all 0.25s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
         }
 
         .social-pill:hover {
             background: rgba(255,255,255,0.16);
-            border-color: rgba(255,255,255,0.35);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
         }
 
-        .spotify-pill:hover {
-            border-color: rgba(30, 215, 96, 0.5);
-            box-shadow: 0 0 15px rgba(30, 215, 96, 0.2);
+        .github-pill:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* REDDIT GLOW EFFECT (#FF4500) */
+        .reddit-pill:hover {
+            border-color: rgba(255, 69, 0, 0.7);
+            background: rgba(255, 69, 0, 0.12);
+            box-shadow: 0 0 25px rgba(255, 69, 0, 0.45);
         }
 
         .widgets-row {
@@ -295,9 +334,10 @@
         }
 
         .sidebar-toggle:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.16);
+            border-color: rgba(255,255,255,0.45);
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         /* LEFT SIDEBAR DRAWER */
@@ -307,11 +347,11 @@
             left: -380px;
             width: 340px;
             height: 100%;
-            background: rgba(12, 15, 20, 0.92);
+            background: rgba(10, 13, 18, 0.94);
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
             border-right: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 10px 0 40px rgba(0,0,0,0.6);
+            box-shadow: 10px 0 40px rgba(0,0,0,0.7);
             padding: 40px 24px;
             transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 100;
@@ -381,8 +421,8 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(4px);
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(6px);
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s;
@@ -442,6 +482,9 @@
 </head>
 <body>
 
+    <!-- Particle Canvas Background -->
+    <canvas id="particle-canvas"></canvas>
+
     <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
     <!-- PAGE 1: HERO LANDING -->
@@ -464,7 +507,9 @@
         <div class="profile-section">
             <div class="avatar-container">
                 <div class="avatar-glow"></div>
-                <div class="avatar">A</div>
+                <div class="avatar" id="avatarBox">
+                    <img src="profile.jpg" alt="A" onerror="this.style.display='none'; document.getElementById('avatarBox').innerText='A';">
+                </div>
             </div>
             <div class="profile-info">
                 <div class="profile-name">
@@ -481,12 +526,12 @@
 
         <!-- Social Redirect Buttons -->
         <div class="social-links">
-            <a href="https://github.com/Arjun-void" target="_blank" class="social-pill github-pill">
-                <span>💻</span> GitHub Profile
+            <a href="https://github.com/Arjun-void" target="_blank" rel="noopener noreferrer" class="social-pill github-pill">
+                <span>💻</span> GitHub
             </a>
-            <!-- Exact Spotify link provided -->
-            <a href="https://open.spotify.com/user/31txrqeaxi74wbi4zjkrap7staq4?si=fddae1dc51d249b5" target="_blank" class="social-pill spotify-pill">
-                <span>🎵</span> Spotify
+            <!-- REPLACE 'YOUR_REDDIT_USERNAME' WITH YOUR ACTUAL REDDIT USERNAME -->
+            <a href="https://www.reddit.com/user/YOUR_REDDIT_USERNAME/" target="_blank" rel="noopener noreferrer" class="social-pill reddit-pill">
+                <span>🔥</span> Reddit
             </a>
         </div>
 
@@ -494,7 +539,7 @@
         <div class="widgets-row">
             <div class="widget-box">
                 <div class="counter-dot"></div>
-                <span>Profile views: <strong id="viewCount" style="color: #fff;">87</strong></span>
+                <span>Profile views: <strong id="viewCount" style="color: #fff;">88</strong></span>
             </div>
             <div class="widget-box">
                 <span>📚 3 Subjects Loaded</span>
@@ -549,6 +594,7 @@
     </div>
 
     <script>
+        // Page Transitions
         function goToPage2() {
             document.getElementById('page1').classList.remove('active');
             setTimeout(() => {
@@ -563,6 +609,7 @@
             }, 200);
         }
 
+        // Left Sidebar Control
         function openSidebar() {
             document.getElementById('sidebar').classList.add('open');
             document.getElementById('overlay').classList.add('active');
@@ -589,17 +636,17 @@
             document.getElementById('modalTitle').innerText = title;
             const body = document.getElementById('modalBody');
             
-            // Displays PDF directly if uploaded, otherwise shows a preview box
             body.innerHTML = `<iframe src="${filename}" width="100%" height="100%" style="border:none; border-radius:12px;"></iframe>`;
             
             document.getElementById('noteModal').classList.add('active');
             document.getElementById('overlay').classList.add('active');
         }
 
+        // Persistent View Counter
         function setupViewCounter() {
             let currentViews = localStorage.getItem('site_views');
             if (!currentViews) {
-                currentViews = 87;
+                currentViews = 88;
             } else {
                 currentViews = parseInt(currentViews) + 1;
             }
@@ -608,6 +655,60 @@
         }
 
         setupViewCounter();
+
+        // Canvas Particle Stars Effect
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.6 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 70; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
     </script>
 </body>
 </html>
