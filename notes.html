@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - Simple IGCSE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            background: #090a0f url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=2000&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: rgba(18, 22, 28, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 40px;
+        }
+        .back-link {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: #fff; }
+        h1 { font-weight: 400; margin: 20px 0 30px; font-size: 2rem; }
+        h2 { font-weight: 500; font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
+        ul { list-style: none; }
+        li { margin-bottom: 12px; }
+        .resource-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255,255,255,0.05);
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.08);
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .resource-item:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← back home</a>
+        <h1>IGCSE Resources</h1>
+
+        <h2>Physics</h2>
+        <ul>
+            <li>
+                <a class="resource-item" href="physics-forces.pdf" target="_blank">
+                    <span>📄 Forces & Motion Notes</span>
+                    <span>Download ↗</span>
+                </a>
+            </li>
+        </ul>
+
+        <h2>Mathematics</h2>
+        <ul>
+            <li>
+                <a class="resource-item" href="math-formulas.pdf" target="_blank">
+                    <span>📄 Algebra Formula Sheet</span>
+                    <span>Download ↗</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
