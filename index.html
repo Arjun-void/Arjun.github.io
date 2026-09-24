@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple IGCSE</title>
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* HD Space Wallpaper Background */
+            background: #090a0f url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=2000&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Inter', -apple-system, sans-serif;
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            width: 100%;
+            max-width: 650px;
+            padding: 60px 40px;
+            border-radius: 24px;
+            background: rgba(18, 22, 28, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .star-icon {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .subtitle {
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 440px;
+            line-height: 1.6;
+            margin-bottom: 36px;
+            font-weight: 300;
+        }
+
+        .enter-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 28px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .enter-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .arrow {
+            font-size: 0.9rem;
+            transition: transform 0.2s ease;
+        }
+
+        .enter-btn:hover .arrow {
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 600px) {
+            .glass-card { padding: 40px 24px; }
+            .title { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-card">
+        <div class="star-icon">✦</div>
+        <div class="subtitle">CAMBRIDGE · IGCSE</div>
+        <h1 class="title">simple igcse</h1>
+        <p class="description">
+            igcse study resources and revision notes, made for every student.
+        </p>
+        <a href="notes.html" class="enter-btn">
+            enter <span class="arrow">→</span>
+        </a>
+    </div>
+
+</body>
+</html>
