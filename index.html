@@ -148,7 +148,6 @@
             margin-bottom: 24px;
         }
 
-        /* Animated Glowing Avatar */
         .avatar-container {
             position: relative;
         }
@@ -181,7 +180,6 @@
             opacity: 0.7;
         }
 
-        /* Stylish Name Styling */
         .profile-name {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 2.2rem;
@@ -254,11 +252,6 @@
             box-shadow: 0 0 15px rgba(30, 215, 96, 0.2);
         }
 
-        .github-pill:hover {
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Widgets Row (Counter + Stats) */
         .widgets-row {
             display: flex;
             gap: 12px;
@@ -286,7 +279,6 @@
             box-shadow: 0 0 10px #10B981;
         }
 
-        /* Sidebar Trigger Button */
         .sidebar-toggle {
             width: 100%;
             padding: 16px 22px;
@@ -312,10 +304,10 @@
         .sidebar {
             position: fixed;
             top: 0;
-            left: -380px; /* Positioned Left */
+            left: -380px;
             width: 340px;
             height: 100%;
-            background: rgba(12, 15, 20, 0.88);
+            background: rgba(12, 15, 20, 0.92);
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
             border-right: 1px solid rgba(255, 255, 255, 0.12);
@@ -327,7 +319,7 @@
         }
 
         .sidebar.open {
-            left: 0; /* Slides in from left */
+            left: 0;
         }
 
         .sidebar-header {
@@ -374,6 +366,7 @@
             text-decoration: none;
             font-size: 0.88rem;
             margin-bottom: 10px;
+            cursor: pointer;
             transition: all 0.25s;
         }
 
@@ -401,6 +394,44 @@
             pointer-events: auto;
         }
 
+        /* PDF Viewer Modal */
+        .modal {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            width: 90%; max-width: 800px;
+            height: 80vh;
+            background: rgba(18, 22, 28, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal-title { font-size: 1rem; font-weight: 500; }
+        .modal-close { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+        .modal-body { flex: 1; padding: 20px; display: flex; align-items: center; justify-content: center; overflow: auto; color: rgba(255,255,255,0.7); text-align: center; }
+
         @media (max-width: 600px) {
             .title { font-size: 2.8rem; }
             .profile-name { font-size: 1.8rem; }
@@ -411,8 +442,7 @@
 </head>
 <body>
 
-    <!-- Dark Overlay for Sidebar -->
-    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
     <!-- PAGE 1: HERO LANDING -->
     <div class="glass-card hero-card active" id="page1">
@@ -454,8 +484,8 @@
             <a href="https://github.com/Arjun-void" target="_blank" class="social-pill github-pill">
                 <span>💻</span> GitHub Profile
             </a>
-            <!-- REPLACE LINK BELOW WITH YOUR SPOTIFY PROFILE / PLAYLIST LINK -->
-            <a href="https://open.spotify.com" target="_blank" class="social-pill spotify-pill">
+            <!-- Exact Spotify link provided -->
+            <a href="https://open.spotify.com/user/31txrqeaxi74wbi4zjkrap7staq4?si=fddae1dc51d249b5" target="_blank" class="social-pill spotify-pill">
                 <span>🎵</span> Spotify
             </a>
         </div>
@@ -471,7 +501,6 @@
             </div>
         </div>
 
-        <!-- Button to open Left Sidebar -->
         <button class="sidebar-toggle" onclick="openSidebar()">
             <span>📚 Browse All Topics & Notes</span>
             <span>→</span>
@@ -488,37 +517,38 @@
         <!-- Physics Section -->
         <div class="topic-group">
             <div class="topic-title">Physics</div>
-            <a href="physics-forces.pdf" target="_blank" class="resource-link">
+            <div class="resource-link" onclick="openNote('Forces & Motion', 'physics-forces.pdf')">
                 <span>📄 Forces & Motion Notes</span>
-                <span>PDF ↗</span>
-            </a>
-            <a href="physics-waves.pdf" target="_blank" class="resource-link">
+                <span>View ↗</span>
+            </div>
+            <div class="resource-link" onclick="openNote('Waves & Electricity', 'physics-waves.pdf')">
                 <span>📄 Waves & Electricity</span>
-                <span>PDF ↗</span>
-            </a>
+                <span>View ↗</span>
+            </div>
         </div>
 
         <!-- Mathematics Section -->
         <div class="topic-group">
             <div class="topic-title">Mathematics</div>
-            <a href="math-formulas.pdf" target="_blank" class="resource-link">
+            <div class="resource-link" onclick="openNote('Algebra Formula Sheet', 'math-formulas.pdf')">
                 <span>📄 Algebra Formula Sheet</span>
-                <span>PDF ↗</span>
-            </a>
+                <span>View ↗</span>
+            </div>
         </div>
+    </div>
 
-        <!-- Chemistry Section -->
-        <div class="topic-group">
-            <div class="topic-title">Chemistry</div>
-            <a href="chemistry-stoichiometry.pdf" target="_blank" class="resource-link">
-                <span>📄 Stoichiometry & Moles</span>
-                <span>PDF ↗</span>
-            </a>
+    <!-- Note Viewer Modal -->
+    <div class="modal" id="noteModal">
+        <div class="modal-header">
+            <span class="modal-title" id="modalTitle">Document Title</span>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- Embed PDF or preview text -->
         </div>
     </div>
 
     <script>
-        // Page Transitions
         function goToPage2() {
             document.getElementById('page1').classList.remove('active');
             setTimeout(() => {
@@ -533,7 +563,6 @@
             }, 200);
         }
 
-        // Left Sidebar Controls
         function openSidebar() {
             document.getElementById('sidebar').classList.add('open');
             document.getElementById('overlay').classList.add('active');
@@ -544,7 +573,29 @@
             document.getElementById('overlay').classList.remove('active');
         }
 
-        // Persistent View Counter starting at 87
+        function closeModal() {
+            document.getElementById('noteModal').classList.remove('active');
+            if(!document.getElementById('sidebar').classList.contains('open')) {
+                document.getElementById('overlay').classList.remove('active');
+            }
+        }
+
+        function closeAll() {
+            closeSidebar();
+            closeModal();
+        }
+
+        function openNote(title, filename) {
+            document.getElementById('modalTitle').innerText = title;
+            const body = document.getElementById('modalBody');
+            
+            // Displays PDF directly if uploaded, otherwise shows a preview box
+            body.innerHTML = `<iframe src="${filename}" width="100%" height="100%" style="border:none; border-radius:12px;"></iframe>`;
+            
+            document.getElementById('noteModal').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        }
+
         function setupViewCounter() {
             let currentViews = localStorage.getItem('site_views');
             if (!currentViews) {
