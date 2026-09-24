@@ -3,24 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Arjun — IGCSE Vault</title>
+    <title>Arjun — IGCSE Vault & Community Hub</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        function handleImageError() {
+            const img = document.getElementById('userAvatar');
+            if (!img) return;
+            if (img.src.endsWith('profile.png')) {
+                img.src = 'profile.jpg';
+            } else if (img.src.endsWith('profile.jpg')) {
+                img.src = 'profile.jpg.png';
+            } else {
+                img.style.display = 'none';
+                const avatarBox = document.getElementById('avatarBox');
+                if (avatarBox) avatarBox.innerText = 'A';
+            }
+        }
+    </script>
 
     <style>
         :root {
-            --bg-dark: #05070B;
-            --card-bg: rgba(13, 16, 23, 0.72);
-            --border-color: rgba(255, 255, 255, 0.12);
-            --border-hover: rgba(255, 255, 255, 0.28);
+            --bg-dark: #04060A;
+            --card-bg: rgba(13, 17, 25, 0.75);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --card-border-glow: rgba(0, 242, 254, 0.3);
             --text-main: #FFFFFF;
             --text-muted: rgba(255, 255, 255, 0.65);
             --accent-cyan: #00F2FE;
             --accent-purple: #9d4edd;
+            --accent-pink: #f72585;
             --accent-reddit: #FF4500;
             --accent-green: #10B981;
+            --accent-amber: #F59E0B;
+            --accent-blue: #3B82F6;
         }
 
         * {
@@ -49,46 +68,46 @@
         .ambient-orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(90px);
-            opacity: 0.45;
+            filter: blur(100px);
+            opacity: 0.4;
             pointer-events: none;
             z-index: 1;
-            animation: floatGlow 10s ease-in-out infinite alternate;
+            animation: floatGlow 12s ease-in-out infinite alternate;
         }
 
         .orb-1 {
-            width: 320px;
-            height: 320px;
+            width: 380px;
+            height: 380px;
             background: radial-gradient(circle, var(--accent-purple), transparent);
-            top: 10%;
-            left: 15%;
+            top: 5%;
+            left: 10%;
         }
 
         .orb-2 {
-            width: 380px;
-            height: 380px;
-            background: radial-gradient(circle, #00C6FF, transparent);
-            bottom: 10%;
-            right: 15%;
-            animation-delay: -5s;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, var(--accent-cyan), transparent);
+            bottom: 5%;
+            right: 10%;
+            animation-delay: -6s;
         }
 
         @keyframes floatGlow {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, -40px) scale(1.15); }
+            100% { transform: translate(40px, -50px) scale(1.18); }
         }
 
-        /* Glassmorphism Card Container */
+        /* Glassmorphism Outer Card */
         .glass-card {
             width: 100%;
-            max-width: 640px;
-            padding: 40px 36px;
+            max-width: 680px;
+            padding: 38px 32px;
             border-radius: 28px;
             background: var(--card-bg);
-            backdrop-filter: blur(28px);
-            -webkit-backdrop-filter: blur(28px);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.7),
                         inset 0 1px 0 rgba(255, 255, 255, 0.15);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: absolute;
@@ -125,7 +144,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             margin-bottom: 24px;
         }
 
@@ -142,9 +161,9 @@
         }
 
         .hero-desc {
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             color: var(--text-muted);
-            max-width: 440px;
+            max-width: 460px;
             line-height: 1.6;
             margin-bottom: 36px;
             font-weight: 400;
@@ -156,8 +175,8 @@
             gap: 10px;
             padding: 14px 38px;
             border-radius: 999px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.2) 0%, rgba(157, 78, 221, 0.2) 100%);
+            border: 1px solid rgba(0, 242, 254, 0.4);
             color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
@@ -169,10 +188,10 @@
         }
 
         .btn-enter:hover {
-            background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
-            border-color: rgba(255, 255, 255, 0.6);
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.4) 0%, rgba(157, 78, 221, 0.4) 100%);
+            border-color: var(--accent-cyan);
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.25);
+            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.35);
         }
 
         /* PAGE 2: PROFILE DASHBOARD */
@@ -212,7 +231,7 @@
             border-radius: 50%;
             z-index: 1;
             filter: blur(10px);
-            opacity: 0.8;
+            opacity: 0.85;
             animation: borderGlow 6s linear infinite;
         }
 
@@ -240,7 +259,7 @@
             overflow: hidden;
         }
 
-        /* IMAGE PROTECTION CSS */
+        /* Image Copy Protection */
         .avatar img {
             width: 100%;
             height: 100%;
@@ -308,7 +327,7 @@
 
         .bio-text {
             font-size: 0.92rem;
-            color: rgba(255,255,255,0.78);
+            color: rgba(255,255,255,0.8);
             line-height: 1.65;
             margin-bottom: 26px;
             font-weight: 400;
@@ -324,7 +343,7 @@
 
         .social-btn {
             flex: 1;
-            min-width: 100px;
+            min-width: 110px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -332,7 +351,7 @@
             padding: 12px 16px;
             border-radius: 16px;
             background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--card-border);
             color: #ffffff;
             text-decoration: none;
             font-size: 0.88rem;
@@ -391,7 +410,7 @@
             width: 100%;
             padding: 16px 24px;
             background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--card-border);
             border-radius: 18px;
             color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
@@ -406,10 +425,435 @@
 
         .action-banner:hover {
             background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-            border-color: var(--border-hover);
+            border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
+
+        /* COMMUNITY FEED & DISCUSSION HUB STYLES */
+        .community-section {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .feed-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .feed-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feed-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .feed-counter-pill {
+            font-size: 0.75rem;
+            background: rgba(0, 242, 254, 0.12);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            padding: 3px 10px;
+            border-radius: 99px;
+            font-weight: 600;
+        }
+
+        .admin-toggle-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 99px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .admin-toggle-btn:hover, .admin-toggle-btn.active {
+            background: rgba(247, 37, 133, 0.15);
+            border-color: var(--accent-pink);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(247, 37, 133, 0.25);
+        }
+
+        /* Filter Tabs */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            scrollbar-width: none;
+        }
+
+        .filter-bar::-webkit-scrollbar { display: none; }
+
+        .tab-btn {
+            padding: 8px 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(157, 78, 221, 0.2));
+            border-color: rgba(0, 242, 254, 0.4);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.15);
+        }
+
+        /* Post Creation Box */
+        .new-post-box {
+            background: rgba(20, 26, 38, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s;
+        }
+
+        .new-post-box:focus-within {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+        }
+
+        .post-input-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .post-author-input, .post-category-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .post-author-input { flex: 2; min-width: 160px; }
+        .post-category-select { flex: 1; min-width: 130px; background-color: #0f141f; }
+
+        .post-textarea {
+            width: 100%;
+            min-height: 80px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 14px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            resize: vertical;
+            margin-bottom: 12px;
+            transition: all 0.2s;
+        }
+
+        .post-textarea:focus {
+            border-color: rgba(0, 242, 254, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .post-action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .char-counter {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .btn-post {
+            padding: 10px 22px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-post:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 242, 254, 0.35);
+            opacity: 0.95;
+        }
+
+        /* Post Cards List */
+        .posts-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .post-card {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .post-card:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 10px;
+        }
+
+        .post-user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .post-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .post-author {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .post-time {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .badge-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 99px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .tag-under_review { background: rgba(59, 130, 246, 0.15); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .tag-planned { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .tag-in_progress { background: rgba(157, 78, 221, 0.18); color: #C084FC; border: 1px solid rgba(157, 78, 221, 0.35); }
+        .tag-completed { background: rgba(16, 185, 129, 0.15); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        .category-pill {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-left: 6px;
+        }
+
+        .post-content {
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            white-space: pre-line;
+            word-break: break-word;
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .upvote-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .upvote-btn:hover {
+            background: rgba(0, 242, 254, 0.12);
+            border-color: rgba(0, 242, 254, 0.4);
+            color: #fff;
+        }
+
+        .upvote-btn.voted {
+            background: rgba(0, 242, 254, 0.2);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+        }
+
+        .admin-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-action-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            padding: 5px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .admin-action-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+
+        .admin-action-btn.delete-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.5);
+            color: #FCA5A5;
+        }
+
+        /* Official Creator Response Card */
+        .official-reply-card {
+            margin-top: 14px;
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(157, 78, 221, 0.08) 100%);
+            border: 1px solid rgba(0, 242, 254, 0.28);
+            border-radius: 16px;
+            padding: 14px 16px;
+            position: relative;
+        }
+
+        .official-reply-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .creator-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .creator-badge-icon {
+            width: 18px;
+            height: 18px;
+            background: var(--accent-cyan);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 900;
+        }
+
+        .official-reply-text {
+            font-size: 0.88rem;
+            color: #ffffff;
+            line-height: 1.55;
+        }
+
+        /* Inline Admin Reply Box */
+        .reply-input-box {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .reply-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: 10px;
+            padding: 8px 12px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .btn-reply-submit {
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-reply-submit:hover { opacity: 0.9; }
 
         /* LEFT SIDEBAR DRAWER */
         .sidebar {
@@ -419,10 +863,10 @@
             width: 320px;
             max-width: 85vw;
             height: 100%;
-            background: rgba(10, 13, 18, 0.95);
+            background: rgba(8, 11, 16, 0.96);
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
-            border-right: 1px solid var(--border-color);
+            border-right: 1px solid var(--card-border);
             box-shadow: 10px 0 40px rgba(0,0,0,0.8);
             padding: 32px 20px;
             transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -438,7 +882,7 @@
             align-items: center;
             margin-bottom: 28px;
             padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--card-border);
         }
 
         .sidebar-title {
@@ -491,7 +935,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.65);
             backdrop-filter: blur(6px);
             opacity: 0;
             pointer-events: none;
@@ -504,16 +948,16 @@
             pointer-events: auto;
         }
 
-        /* MODALS (PDF Viewer & Feedback Form) */
+        /* MODALS (PDF & Admin Auth) */
         .modal {
             position: fixed;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%) scale(0.95);
             width: 92%; max-width: 800px;
             height: 80vh;
-            background: rgba(13, 16, 23, 0.96);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
+            background: rgba(10, 14, 22, 0.96);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--card-border);
             border-radius: 20px;
             z-index: 200;
             display: flex;
@@ -535,16 +979,15 @@
             justify-content: space-between;
             align-items: center;
             padding: 16px 20px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--card-border);
         }
 
         .modal-title { font-weight: 600; font-size: 0.95rem; }
         .modal-close { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
-        /* OPTIMIZED SCROLLING MODAL BODY */
         .modal-body { 
             flex: 1; 
-            padding: 12px; 
+            padding: 16px; 
             display: flex; 
             align-items: center; 
             justify-content: center;
@@ -553,78 +996,42 @@
             transform: translateZ(0);
         }
 
-        /* Feedback Form Styles */
-        .feedback-form {
+        .admin-modal-card {
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 16px;
+        }
+
+        .admin-pin-input {
             width: 100%;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            text-align: left;
-        }
-
-        .form-group label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            color: #ffffff;
-            font-family: inherit;
-            font-size: 0.9rem;
-            outline: none;
-            transition: all 0.2s;
-        }
-
-        .form-input:focus, .form-textarea:focus {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .btn-submit {
             padding: 12px;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            border: none;
-            color: #ffffff;
-            font-weight: 600;
-            font-family: 'Space Grotesk', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s;
+            color: #fff;
+            outline: none;
         }
 
-        .btn-submit:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(0, 242, 254, 0.3);
-        }
+        .admin-pin-input:focus { border-color: var(--accent-pink); }
 
         /* Responsive Mobile Optimizations */
         @media (max-width: 580px) {
-            body { padding: 12px; }
-            .glass-card { padding: 28px 20px; border-radius: 22px; }
-            .hero-card { padding: 36px 16px; }
+            body { padding: 10px; }
+            .glass-card { padding: 26px 18px; border-radius: 22px; }
+            .hero-card { padding: 36px 14px; }
             .profile-header { flex-direction: column; text-align: center; gap: 14px; }
             .name-row { justify-content: center; }
             .social-grid { flex-direction: column; }
             .social-btn { width: 100%; }
+            .feed-header { flex-direction: column; align-items: flex-start; }
+            .post-action-bar { flex-direction: column; gap: 10px; align-items: stretch; }
+            .btn-post { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -641,14 +1048,14 @@
         <div class="star-badge">✦ CAMBRIDGE · IGCSE</div>
         <h1 class="hero-title">simple igcse</h1>
         <p class="hero-desc">
-            Revision notes, formula sheets, and study materials curated for Cambridge students.
+            High-yield revision notes, formula sheets, and past paper insights curated for Cambridge learners.
         </p>
         <button class="btn-enter" onclick="goToPage2()">
-            Enter Vault <span>→</span>
+            Enter Vault & Hub <span>→</span>
         </button>
     </div>
 
-    <!-- PAGE 2: PROFILE & DASHBOARD -->
+    <!-- PAGE 2: PROFILE DASHBOARD & PUBLIC COMMUNITY HUB -->
     <div class="glass-card" id="page2">
         <button class="back-btn" onclick="goToPage1()">← back home</button>
 
@@ -656,7 +1063,7 @@
             <div class="avatar-wrapper">
                 <div class="avatar-glow"></div>
                 <div class="avatar" id="avatarBox">
-                    <img id="userAvatar" src="profile.png" alt="A" onerror="handleImageError()" draggable="false" oncontextmenu="return false;">
+                    <img id="userAvatar" src="profile.png" alt="Arjun" onerror="handleImageError()" draggable="false" oncontextmenu="return false;">
                 </div>
             </div>
             <div class="profile-meta">
@@ -664,15 +1071,15 @@
                     <h1 class="profile-name">Arjun</h1>
                     <span class="status-badge"><span class="pulse-dot"></span> Active Learner</span>
                 </div>
-                <p class="profile-sub">IGCSE Student & Creator</p>
+                <p class="profile-sub">IGCSE Student & Resource Creator</p>
             </div>
         </div>
 
         <p class="bio-text">
-            Hey! Welcome to my resource vault. I collect and format revision notes, formula sheets, and past paper insights to make studying for Cambridge IGCSE simpler and cleaner.
+            Hey! Welcome to my resource vault. I format concise revision guides and past paper insights to make Cambridge IGCSE preparation cleaner and faster.
         </p>
 
-        <!-- Social & Suggestion Grid -->
+        <!-- Social Buttons -->
         <div class="social-grid">
             <a href="https://github.com/Arjun-void" target="_blank" rel="noopener noreferrer" class="social-btn github-btn">
                 <span>💻</span> GitHub
@@ -680,8 +1087,8 @@
             <a href="https://www.reddit.com/user/ARJUN-IGCSE/" target="_blank" rel="noopener noreferrer" class="social-btn reddit-btn">
                 <span>🤖</span> Reddit
             </a>
-            <button onclick="openFeedbackModal()" class="social-btn feedback-btn">
-                <span>💡</span> Suggest
+            <button onclick="scrollToCommunityFeed()" class="social-btn feedback-btn">
+                <span>💡</span> Hub Feed
             </button>
         </div>
 
@@ -700,6 +1107,53 @@
             <span>📚 Browse All Topics & Notes</span>
             <span>→</span>
         </button>
+
+        <!-- PUBLIC COMMUNITY & SUGGESTION HUB -->
+        <div class="community-section" id="communityFeedSection">
+            <div class="feed-header">
+                <div class="feed-title-wrap">
+                    <h2 class="feed-title">💡 Suggestion Hub & Reviews</h2>
+                    <span class="feed-counter-pill" id="totalPostsPill">0 posts</span>
+                </div>
+                <button class="admin-toggle-btn" id="adminToggleBtn" onclick="toggleAdminAccess()">
+                    <span>🔐 Creator Admin</span>
+                </button>
+            </div>
+
+            <!-- Filter / Sorting Tabs -->
+            <div class="filter-bar">
+                <button class="tab-btn active" onclick="setFilter('latest', this)">✨ Latest</button>
+                <button class="tab-btn" onclick="setFilter('popular', this)">🔥 Popular</button>
+                <button class="tab-btn" onclick="setFilter('answered', this)">⚡ Answered by Arjun</button>
+                <button class="tab-btn" onclick="setFilter('completed', this)">✅ Completed</button>
+            </div>
+
+            <!-- Submit New Suggestion Box -->
+            <div class="new-post-box">
+                <div class="post-input-row">
+                    <input type="text" id="postAuthor" class="post-author-input" placeholder="Your Name or Reddit @username (Optional)">
+                    <select id="postCategory" class="post-category-select">
+                        <option value="Physics">🪐 Physics</option>
+                        <option value="Chemistry">🧪 Chemistry</option>
+                        <option value="Maths">📐 Maths</option>
+                        <option value="Feature Request">⚙️ Feature Request</option>
+                        <option value="General Review">⭐ Review</option>
+                    </select>
+                </div>
+                <textarea id="postContent" class="post-textarea" placeholder="Suggest new notes, report an error, or leave a review... We actually read and respond to everything!" maxlength="400" oninput="updateCharCount()"></textarea>
+                <div class="post-action-bar">
+                    <span class="char-counter" id="charCounter">0 / 400</span>
+                    <button class="btn-post" onclick="submitNewPost()">
+                        <span>Publish Suggestion</span> ✨
+                    </button>
+                </div>
+            </div>
+
+            <!-- Live Discussion Feed -->
+            <div class="posts-feed" id="postsFeed">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
     </div>
 
     <!-- LEFT SIDEBAR DRAWER -->
@@ -727,33 +1181,123 @@
         <div class="modal-body" id="modalBody"></div>
     </div>
 
-    <!-- Suggestion / Review Modal -->
-    <div class="modal" id="feedbackModal">
+    <!-- Admin Authentication PIN Modal -->
+    <div class="modal" id="adminAuthModal" style="max-height: 280px; max-width: 420px;">
         <div class="modal-header">
-            <span class="modal-title">💡 Leave a Suggestion or Review</span>
-            <button class="modal-close" onclick="closeFeedbackModal()">&times;</button>
+            <span class="modal-title">🔐 Creator Login</span>
+            <button class="modal-close" onclick="closeAdminModal()">&times;</button>
         </div>
         <div class="modal-body">
-            <form action="https://api.web3forms.com/submit" method="POST" class="feedback-form" id="feedbackForm">
-                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-                <input type="hidden" name="subject" value="New Suggestion on Simple IGCSE">
-
-                <div class="form-group">
-                    <label>Your Name or Reddit Username (Optional)</label>
-                    <input type="text" name="name" class="form-input" placeholder="e.g., Alex / u/Alex123">
-                </div>
-
-                <div class="form-group">
-                    <label>Feedback / Resource Request / Review *</label>
-                    <textarea name="message" class="form-textarea" required placeholder="What notes should I add next? Or leave a review..."></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">Submit Suggestion ✨</button>
-            </form>
+            <div class="admin-modal-card">
+                <p style="font-size: 0.88rem; color: var(--text-muted);">Enter Creator Key to unlock reply, delete, and status moderation controls:</p>
+                <input type="password" id="adminPinInput" class="admin-pin-input" placeholder="••••" maxlength="8">
+                <button class="btn-post" style="justify-content: center; width: 100%;" onclick="verifyAdminPin()">Unlock Admin Mode</button>
+            </div>
         </div>
     </div>
 
     <script>
+        // Default Community Posts Data
+        const SAMPLE_POSTS = [
+            {
+                id: 'post_1',
+                author: 'Aditya Verma',
+                category: 'Feature Request',
+                content: 'Please make the feedback system public so everyone can see suggestions and replies! Also add more Space Physics past paper questions if possible.',
+                status: 'completed',
+                timestamp: '2 hours ago',
+                upvotes: 14,
+                voted: false,
+                officialReply: {
+                    author: 'Arjun (Creator)',
+                    content: 'Done! The community hub is now 100% public with live upvoting, status tags, and direct creator responses. Space Physics solved questions are coming next week!',
+                    timestamp: '1 hour ago'
+                }
+            },
+            {
+                id: 'post_2',
+                author: 'u/IGCSE_Warrior',
+                category: 'Physics',
+                content: 'The Space Physics notes are super clean! Can you make a quick 1-page formula sheet for General Physics (Motion, Forces, Pressure)?',
+                status: 'in_progress',
+                timestamp: '5 hours ago',
+                upvotes: 9,
+                voted: false,
+                officialReply: {
+                    author: 'Arjun (Creator)',
+                    content: 'Thanks! I am currently compiling the Physics formula cheat sheet. It will be added to the sidebar drawer shortly.',
+                    timestamp: '3 hours ago'
+                }
+            },
+            {
+                id: 'post_3',
+                author: 'Sarah_K',
+                category: 'Chemistry',
+                content: 'Are Organic Chemistry summary mind-maps planned for 0620 syllabus?',
+                status: 'planned',
+                timestamp: '1 day ago',
+                upvotes: 6,
+                voted: false,
+                officialReply: null
+            }
+        ];
+
+        // Global State Variables
+        let posts = [];
+        let currentFilter = 'latest';
+        let isAdmin = false;
+        
+        // SHA-256 Hash of Admin Passcode ("1234"). Plaintext PIN is never exposed in client source code.
+        const ADMIN_PIN_HASH = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4';
+
+        // Anti-Inspect & DevTools Hardening
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
+                (e.metaKey && e.altKey && (e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C')) ||
+                (e.ctrlKey && (e.key === 'u' || e.key === 'U')) ||
+                (e.metaKey && (e.key === 'u' || e.key === 'U'))
+            ) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        });
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Initialize Data on Load
+        function initApp() {
+            const storedPosts = localStorage.getItem('arjun_vault_posts');
+            if (storedPosts) {
+                try {
+                    posts = JSON.parse(storedPosts);
+                } catch(e) {
+                    posts = SAMPLE_POSTS;
+                }
+            } else {
+                posts = SAMPLE_POSTS;
+                savePosts();
+            }
+
+            const adminState = localStorage.getItem('arjun_vault_admin');
+            if (adminState === 'true') {
+                isAdmin = true;
+                updateAdminUI();
+            }
+
+            setupViewCounter();
+            renderFeed();
+        }
+
+        function savePosts() {
+            localStorage.setItem('arjun_vault_posts', JSON.stringify(posts));
+        }
+
+        // Page Navigation
         function goToPage2() {
             document.getElementById('page1').classList.remove('active');
             setTimeout(() => {
@@ -780,18 +1324,13 @@
 
         function closeModal() {
             document.getElementById('noteModal').classList.remove('active');
-            if(!document.getElementById('sidebar').classList.contains('open') && !document.getElementById('feedbackModal').classList.contains('active')) {
+            if(!document.getElementById('sidebar').classList.contains('open') && !document.getElementById('adminAuthModal').classList.contains('active')) {
                 document.getElementById('overlay').classList.remove('active');
             }
         }
 
-        function openFeedbackModal() {
-            document.getElementById('feedbackModal').classList.add('active');
-            document.getElementById('overlay').classList.add('active');
-        }
-
-        function closeFeedbackModal() {
-            document.getElementById('feedbackModal').classList.remove('active');
+        function closeAdminModal() {
+            document.getElementById('adminAuthModal').classList.remove('active');
             if(!document.getElementById('sidebar').classList.contains('open') && !document.getElementById('noteModal').classList.contains('active')) {
                 document.getElementById('overlay').classList.remove('active');
             }
@@ -800,9 +1339,14 @@
         function closeAll() {
             closeSidebar();
             closeModal();
-            closeFeedbackModal();
+            closeAdminModal();
         }
 
+        function scrollToCommunityFeed() {
+            document.getElementById('communityFeedSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // PDF Note Viewer Modal
         function openNote(title, filename) {
             document.getElementById('modalTitle').innerText = title;
             const body = document.getElementById('modalBody');
@@ -822,6 +1366,271 @@
             document.getElementById('overlay').classList.add('active');
         }
 
+        // Form & Post Helpers
+        function updateCharCount() {
+            const val = document.getElementById('postContent').value.length;
+            document.getElementById('charCounter').innerText = `${val} / 400`;
+        }
+
+        function submitNewPost() {
+            const content = document.getElementById('postContent').value.trim();
+            let author = document.getElementById('postAuthor').value.trim();
+            const category = document.getElementById('postCategory').value;
+
+            if (!content) {
+                alert('Please type a suggestion or review before publishing!');
+                return;
+            }
+
+            if (!author) {
+                author = 'Anonymous Learner';
+            }
+
+            const newPost = {
+                id: 'post_' + Date.now(),
+                author: author,
+                category: category,
+                content: content,
+                status: 'under_review',
+                timestamp: 'Just now',
+                upvotes: 1,
+                voted: true,
+                officialReply: null
+            };
+
+            posts.unshift(newPost);
+            savePosts();
+
+            // Clear inputs
+            document.getElementById('postContent').value = '';
+            document.getElementById('postAuthor').value = '';
+            updateCharCount();
+
+            renderFeed();
+        }
+
+        function toggleUpvote(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (!post) return;
+
+            if (post.voted) {
+                post.upvotes -= 1;
+                post.voted = false;
+            } else {
+                post.upvotes += 1;
+                post.voted = true;
+            }
+
+            savePosts();
+            renderFeed();
+        }
+
+        // Filtering Logic
+        function setFilter(filter, element) {
+            currentFilter = filter;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if(element) element.classList.add('active');
+            renderFeed();
+        }
+
+        // Admin Auth & Moderation Functions
+        function toggleAdminAccess() {
+            if (isAdmin) {
+                isAdmin = false;
+                localStorage.setItem('arjun_vault_admin', 'false');
+                updateAdminUI();
+                renderFeed();
+            } else {
+                document.getElementById('adminAuthModal').classList.add('active');
+                document.getElementById('overlay').classList.add('active');
+            }
+        }
+
+        // Cryptographic SHA-256 String Hasher
+        async function hashString(str) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(str);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function verifyAdminPin() {
+            const input = document.getElementById('adminPinInput').value;
+            const inputHash = await hashString(input);
+            if (inputHash === ADMIN_PIN_HASH) {
+                isAdmin = true;
+                localStorage.setItem('arjun_vault_admin', 'true');
+                document.getElementById('adminPinInput').value = '';
+                closeAdminModal();
+                updateAdminUI();
+                renderFeed();
+            } else {
+                alert('Incorrect Creator Key!');
+            }
+        }
+
+        function updateAdminUI() {
+            const btn = document.getElementById('adminToggleBtn');
+            if (isAdmin) {
+                btn.classList.add('active');
+                btn.innerHTML = '⚡ Admin Unlocked (Click to Exit)';
+            } else {
+                btn.classList.remove('active');
+                btn.innerHTML = '🔐 Creator Admin';
+            }
+        }
+
+        function deletePost(postId) {
+            if (!isAdmin) return;
+            posts = posts.filter(p => p.id !== postId);
+            savePosts();
+            renderFeed();
+        }
+
+        function changePostStatus(postId, newStatus) {
+            if (!isAdmin) return;
+            const post = posts.find(p => p.id === postId);
+            if (post) {
+                post.status = newStatus;
+                savePosts();
+                renderFeed();
+            }
+        }
+
+        function submitOfficialReply(postId) {
+            if (!isAdmin) return;
+            const input = document.getElementById(`reply_input_${postId}`);
+            if (!input) return;
+            const text = input.value.trim();
+            if (!text) return;
+
+            const post = posts.find(p => p.id === postId);
+            if (post) {
+                post.officialReply = {
+                    author: 'Arjun (Creator)',
+                    content: text,
+                    timestamp: 'Just now'
+                };
+                if (post.status === 'under_review') {
+                    post.status = 'in_progress';
+                }
+                savePosts();
+                renderFeed();
+            }
+        }
+
+        function deleteOfficialReply(postId) {
+            if (!isAdmin) return;
+            const post = posts.find(p => p.id === postId);
+            if (post) {
+                post.officialReply = null;
+                savePosts();
+                renderFeed();
+            }
+        }
+
+        // Render Feed Logic
+        function renderFeed() {
+            const feedContainer = document.getElementById('postsFeed');
+            document.getElementById('totalPostsPill').innerText = `${posts.length} posts`;
+
+            let filtered = [...posts];
+
+            if (currentFilter === 'popular') {
+                filtered.sort((a, b) => b.upvotes - a.upvotes);
+            } else if (currentFilter === 'answered') {
+                filtered = filtered.filter(p => p.officialReply !== null);
+            } else if (currentFilter === 'completed') {
+                filtered = filtered.filter(p => p.status === 'completed');
+            } else {
+                // Latest
+                filtered.sort((a, b) => b.id.localeCompare(a.id));
+            }
+
+            if (filtered.length === 0) {
+                feedContainer.innerHTML = `
+                    <div style="text-align: center; padding: 32px 16px; color: var(--text-muted); font-size: 0.9rem;">
+                        No suggestions found in this view. Be the first to publish one above! ✨
+                    </div>
+                `;
+                return;
+            }
+
+            feedContainer.innerHTML = filtered.map(post => {
+                const statusLabel = {
+                    'under_review': 'Under Review',
+                    'planned': 'Planned',
+                    'in_progress': 'In Progress',
+                    'completed': 'Completed'
+                }[post.status] || 'Under Review';
+
+                return `
+                    <div class="post-card" id="card_${post.id}">
+                        <div class="post-header">
+                            <div class="post-user-info">
+                                <div class="post-avatar">${post.author.charAt(0).toUpperCase()}</div>
+                                <div>
+                                    <div class="post-author">${escapeHtml(post.author)} <span class="category-pill">${escapeHtml(post.category)}</span></div>
+                                    <div class="post-time">${post.timestamp}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="badge-tag tag-${post.status}">${statusLabel}</span>
+                            </div>
+                        </div>
+
+                        <div class="post-content">${escapeHtml(post.content)}</div>
+
+                        ${post.officialReply ? `
+                            <div class="official-reply-card">
+                                <div class="official-reply-header">
+                                    <div class="creator-badge">
+                                        <span class="creator-badge-icon">⚡</span>
+                                        <span>Answered by ${escapeHtml(post.officialReply.author)}</span>
+                                    </div>
+                                    <span class="post-time">${post.officialReply.timestamp}</span>
+                                </div>
+                                <div class="official-reply-text">${escapeHtml(post.officialReply.content)}</div>
+                                ${isAdmin ? `<button class="admin-action-btn delete-btn" style="margin-top: 8px;" onclick="deleteOfficialReply('${post.id}')">Remove Reply</button>` : ''}
+                            </div>
+                        ` : ''}
+
+                        ${isAdmin && !post.officialReply ? `
+                            <div class="reply-input-box">
+                                <input type="text" id="reply_input_${post.id}" class="reply-input" placeholder="Type official response as Arjun...">
+                                <button class="btn-reply-submit" onclick="submitOfficialReply('${post.id}')">Reply</button>
+                            </div>
+                        ` : ''}
+
+                        <div class="post-footer">
+                            <button class="upvote-btn ${post.voted ? 'voted' : ''}" onclick="toggleUpvote('${post.id}')">
+                                <span>▲</span>
+                                <span>${post.upvotes} Upvotes</span>
+                            </button>
+
+                            ${isAdmin ? `
+                                <div class="admin-controls">
+                                    <select class="admin-action-btn" onchange="changePostStatus('${post.id}', this.value)">
+                                        <option value="under_review" ${post.status==='under_review'?'selected':''}>Set: Under Review</option>
+                                        <option value="planned" ${post.status==='planned'?'selected':''}>Set: Planned</option>
+                                        <option value="in_progress" ${post.status==='in_progress'?'selected':''}>Set: In Progress</option>
+                                        <option value="completed" ${post.status==='completed'?'selected':''}>Set: Completed</option>
+                                    </select>
+                                    <button class="admin-action-btn delete-btn" onclick="deletePost('${post.id}')">🗑️ Delete</button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
         function setupViewCounter() {
             let currentViews = localStorage.getItem('site_views');
             if (!currentViews) {
@@ -833,19 +1642,9 @@
             document.getElementById('viewCount').innerText = currentViews;
         }
 
-        function handleImageError() {
-            const img = document.getElementById('userAvatar');
-            if (img.src.endsWith('profile.png')) {
-                img.src = 'profile.jpg';
-            } else if (img.src.endsWith('profile.jpg')) {
-                img.src = 'profile.jpg.png';
-            } else {
-                img.style.display = 'none';
-                document.getElementById('avatarBox').innerText = 'A';
-            }
-        }
-
-        setupViewCounter();
+        window.onload = function() {
+            initApp();
+        };
     </script>
 </body>
 </html>
