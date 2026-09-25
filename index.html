@@ -1033,6 +1033,22 @@
             .post-action-bar { flex-direction: column; gap: 10px; align-items: stretch; }
             .btn-post { width: 100%; justify-content: center; }
         }
+        /* Discord Avatar Frame Overlay */
+.avatar-wrapper {
+    position: relative;
+}
+
+.avatar-frame {
+    position: absolute;
+    top: -12%;
+    left: -12%;
+    width: 124%;
+    height: 124%;
+    pointer-events: none;
+    z-index: 5;
+    user-select: none;
+    -webkit-user-drag: none;
+}
     </style>
 </head>
 <body>
